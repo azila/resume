@@ -1,9 +1,8 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
-  layout 'order_email'
+  default to: 'great.resume.agency@gmail.com'
 
   def order_email(order)
     @order = order
-    mail(to: 'korotchenko.liza@gmail.com', subject: 'New order')
+    mail(from: order.email, subject: 'New order')
   end
 end
