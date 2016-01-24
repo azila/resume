@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     order.choice = params[:choice]
     order.message = params[:choice]
     UserMailer.order_email(order).deliver
+    flash.now[:event] = "<script>_gaq.push(['_trackEvent', 'Order', 'Made'])</script>".html_safe
     redirect_to root_path
   end
 
